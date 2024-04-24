@@ -8,6 +8,6 @@ include $(THEOS)/makefiles/common.mk
 TWEAK_NAME = YoutubeSpeed
 
 YoutubeSpeed_FILES = Tweak.xm
-YoutubeSpeed_CFLAGS = -fobjc-arc
+YoutubeSpeed_CFLAGS = -fobjc-arc -Wno-module-import-in-extern-c
 
 include $(THEOS_MAKE_PATH)/tweak.mk
