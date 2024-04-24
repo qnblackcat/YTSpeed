@@ -6,12 +6,6 @@
 - (id)initWithTitle:(id)title rate:(float)rate;
 @end
 
-@interface YTPlayerViewController : NSObject
-@property id activeVideo;
-@property float playbackRate;
-- (void)singleVideo:(id)video playbackRateDidChange:(float)rate;
-@end
-
 @interface MLHAMQueuePlayer : NSObject
 @property id playerEventCenter;
 @property id delegate;
@@ -73,28 +67,4 @@
 	YTSingleVideoController *singleVideoController = self.delegate;
 	[singleVideoController playerRateDidChange: rate];
 }
-%end 
-
-
-%hook YTPlayerViewController
-%property float playbackRate;
-- (void)singleVideo:(id)video playbackRateDidChange:(float)rate {
-	%orig;
-}
-// - (id)initWithServiceRegistryScope:(id)serviceRegistryScope parentResponder:(id)parentResponder overlayFactory:(id)overlayFactory {
-// 	float savedRate = [[NSUserDefaults standardUserDefaults] floatForKey:@"YoutubeSpeed_PlaybackRate"];
-// 	self.playbackRate = savedRate == 0 ? DEFAULT_RATE : savedRate;
-// 	return %orig;
-// }
-// - (float)currentPlaybackRateForVarispeedSwitchController:(id)varispeedSwitchController {
-// 	return self.playbackRate;
-// }
-// - (void)varispeedSwitchController:(id)varispeedSwitchController didSelectRate:(float)rate {
-// 	self.playbackRate = rate;
-// 	[[NSUserDefaults standardUserDefaults] setFloat: rate forKey:@"YoutubeSpeed_PlaybackRate"];
-// 	if (rate > 2.0f) {
-// 		[self singleVideo:self.activeVideo playbackRateDidChange: rate];
-// 	}
-// 	%orig;
-// }
 %end
